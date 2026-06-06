@@ -5,6 +5,10 @@ import MessageList from './components/MessageList';
 import { clearSession, getToken, getUsername } from './services/api';
 import './App.css';
 
+function getInitials(name) {
+  return (name || '?').slice(0, 2).toUpperCase();
+}
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [username, setUsername] = useState('');
@@ -35,17 +39,21 @@ function App() {
   }
 
   return (
-    <main className="app">
+    <main className={`app ${!isAuthenticated ? 'app--login' : ''}`}>
       <header className="app-header">
-        <div>
-          <h1>Chat UMG — Examen Programación III</h1>
+        <div className="brand">
+          <span className="brand-badge">UMG · Programación III</span>
+          <h1>Chat UMG</h1>
           <p>Autenticación, envío y visualización cronológica de mensajes</p>
         </div>
 
         {isAuthenticated && (
           <div className="session">
-            <span>Sesión: <strong>{username}</strong></span>
-            <button type="button" className="secondary" onClick={handleLogout}>
+            <div className="session-pill">
+              <span className="session-avatar">{getInitials(username)}</span>
+              <span>{username}</span>
+            </div>
+            <button type="button" className="btn-ghost" onClick={handleLogout}>
               Cerrar sesión
             </button>
           </div>

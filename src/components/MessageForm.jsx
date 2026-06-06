@@ -34,7 +34,11 @@ export default function MessageForm({ onMessageSent }) {
 
   return (
     <section className="card">
-      <h2>Serie II — Enviar mensaje</h2>
+      <h2 className="card-title">
+        <span className="card-step">II</span>
+        Enviar mensaje
+      </h2>
+      <p className="card-subtitle">Complete los campos y envíe su mensaje al chat.</p>
 
       <form onSubmit={handleSubmit} className="form">
         <label>
@@ -64,10 +68,10 @@ export default function MessageForm({ onMessageSent }) {
           />
         </label>
 
-        {error && <p className="error">{error}</p>}
-        {success && <p className="success">{success}</p>}
+        {error && <p className="status-banner status-banner--error">{error}</p>}
+        {success && <p className="status-banner status-banner--success">{success}</p>}
 
-        <button type="submit" disabled={loading}>
+        <button type="submit" className="btn-primary" disabled={loading}>
           {loading ? 'Enviando...' : 'Enviar mensaje'}
         </button>
       </form>

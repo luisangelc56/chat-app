@@ -23,9 +23,12 @@ export default function Login({ onLoginSuccess }) {
   }
 
   return (
-    <section className="card">
-      <h2>Serie I — Inicio de sesión</h2>
-      <p className="hint">
+    <section className="card card--login">
+      <h2 className="card-title">
+        <span className="card-step">I</span>
+        Inicio de sesión
+      </h2>
+      <p className="card-subtitle">
         Ingrese solo la parte del correo antes de @miumg.edu.gt (ej: ctezop).
       </p>
 
@@ -54,9 +57,9 @@ export default function Login({ onLoginSuccess }) {
           />
         </label>
 
-        {error && <p className="error">{error}</p>}
+        {error && <p className="status-banner status-banner--error">{error}</p>}
 
-        <button type="submit" disabled={loading}>
+        <button type="submit" className="btn-primary" disabled={loading}>
           {loading ? 'Autenticando...' : 'Iniciar sesión'}
         </button>
       </form>
